@@ -30,7 +30,7 @@ class TLC_Post_Types
     public function set_hooks()
     {
         add_action('init', 'register_tlc_post_types');
-        add_action('generate_rewrite_rules', 'register_services_rewrite_rules');
+        add_action('generate_rewrite_rules', 'register_tlc_rewrite_rules');
     }
 
     /**
@@ -97,15 +97,96 @@ function register_tlc_post_types()
             ],
         ]
     );
+
+    register_taxonomy('event-category', ['events'],
+        [
+            'labels' => [
+                'name' => __('Event Categories'),
+                'menu_name' => __('Event Categories'),
+                'singular_name' => __('Event Category'),
+                'all_items' => __('All Categories'),
+            ],
+            'public' => true,
+            'hierarchical' => true,
+            'show_ui' => true,
+            'rewrite' => [
+                'slug' => 'event-category',
+                'hierarchical' => true,
+                'with_front' => false,
+            ],
+        ]
+    );
+
+    register_post_type('events',
+        [
+            'labels' => [
+                'name' => __('Events'),
+                'menu_name' => __('Event Manager'),
+                'singular_name' => __('Event'),
+                'all_items' => __('All Events'),
+                'add_new_item' => __('Add New Event'),
+            ],
+            'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_nav_menus' => true,
+            'supports' => [
+                'title', 
+                'editor', 
+                'excerpt', 
+                'thumbnail', 
+                'post-formats', 
+                'revisions', 
+                'page-attributes'
+            ],
+            'hierarchical' => false,
+            'has_archive' => true,
+            'taxonomies' => ['event-category'],
+            'rewrite' => [
+                'slug' => 'event',
+                'hierarchical' => true,
+                'with_front' => false,
+            ],
+        ]
+    );
+
+    register_post_type('affiliations',
+        [
+            'labels' => [
+                'name' => __('Affiliations'),
+                'menu_name' => __('Affiliation Manager'),
+                'singular_name' => __('Affiliation'),
+                'all_items' => __('All Affiliations'),
+                'add_new_item' => __('Add New Affiliation'),
+            ],
+            'public' => false,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_nav_menus' => false,
+            'supports' => [
+                'title', 
+                'thumbnail', 
+                'post-formats', 
+                'revisions', 
+                'page-attributes'
+            ],
+            'hierarchical' => false,
+            'has_archive' => false,
+        ]
+    );
 }
 
-function register_services_rewrite_rules($wp_rewrite)
+function register_tlc_rewrite_rules($wp_rewrite)
 {
-    $new_rules = array(
-        'service/([^/]+)/?$' => 'index.php?post_type=service&services=' . $wp_rewrite->preg_index(1),
+    $tlc_rules = array(
+        'service/([^/]+)/?$' => 'index.php?post_type=services&services=' . $wp_rewrite->preg_index(1),
         'service-category/([^/]+)/?$' => 'index.php?service-category=' . $wp_rewrite->preg_index(1),
+        'event/([^/]+)/?$' => 'index.php?post_type=events&events=' . $wp_rewrite->preg_index(1),
+        'event-category/([^/]+)/?$' => 'index.php?event-category=' . $wp_rewrite->preg_index(1),
     );
-    $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+    $wp_rewrite->rules = $tlc_rules + $wp_rewrite->rules;
 }
 
 $TLC_Post_Types = new TLC_Post_Types();
