@@ -180,12 +180,12 @@ function register_tlc_post_types()
 
 function register_tlc_rewrite_rules($wp_rewrite)
 {
-    $tlc_rules = array(
+    $tlc_rules = [
         'service/([^/]+)/?$' => 'index.php?post_type=services&services=' . $wp_rewrite->preg_index(1),
         'service-category/([^/]+)/?$' => 'index.php?service-category=' . $wp_rewrite->preg_index(1),
         'event/([^/]+)/?$' => 'index.php?post_type=events&events=' . $wp_rewrite->preg_index(1),
         'event-category/([^/]+)/?$' => 'index.php?event-category=' . $wp_rewrite->preg_index(1),
-    );
+    ];
     $wp_rewrite->rules = $tlc_rules + $wp_rewrite->rules;
 }
 
