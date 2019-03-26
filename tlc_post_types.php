@@ -98,25 +98,6 @@ function register_tlc_post_types()
         ]
     );
 
-    register_taxonomy('event-category', ['events'],
-        [
-            'labels' => [
-                'name' => __('Event Categories'),
-                'menu_name' => __('Event Categories'),
-                'singular_name' => __('Event Category'),
-                'all_items' => __('All Categories'),
-            ],
-            'public' => true,
-            'hierarchical' => true,
-            'show_ui' => true,
-            'rewrite' => [
-                'slug' => 'event-category',
-                'hierarchical' => true,
-                'with_front' => false,
-            ],
-        ]
-    );
-
     register_post_type('events',
         [
             'labels' => [
@@ -137,12 +118,10 @@ function register_tlc_post_types()
                 'excerpt', 
                 'thumbnail', 
                 'post-formats', 
-                'revisions', 
-                'page-attributes'
+                'revisions'
             ],
             'hierarchical' => false,
             'has_archive' => true,
-            'taxonomies' => ['event-category'],
             'rewrite' => [
                 'slug' => 'event',
                 'hierarchical' => true,
