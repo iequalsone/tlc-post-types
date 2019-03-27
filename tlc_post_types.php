@@ -115,7 +115,6 @@ function register_tlc_post_types()
             'supports' => [
                 'title', 
                 'editor', 
-                'excerpt', 
                 'thumbnail', 
                 'post-formats', 
                 'revisions'
