@@ -1,0 +1,7 @@
+{
+	"name": "iequalsone/tlc-post-types",
+	"description": "Custom Post Types for TLC",
+	"keywords": ["wordpress", "blog", "cms"],
+	"type": "wordpress-plugin"
+}
+
