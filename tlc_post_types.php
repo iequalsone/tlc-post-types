@@ -154,6 +154,29 @@ function register_tlc_post_types()
             'has_archive' => false,
         ]
     );
+
+    register_post_type('featured-sections',
+        [
+            'labels' => [
+                'name' => __('Featured Sections'),
+                'menu_name' => __('Home Page Manager'),
+                'singular_name' => __('Featured Section'),
+                'all_items' => __('All Featured Sections'),
+                'add_new_item' => __('Add New Featured Section'),
+            ],
+            'public' => false,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'show_in_nav_menus' => false,
+            'supports' => [
+                'title', 
+                'revisions', 
+            ],
+            'hierarchical' => false,
+            'has_archive' => false,
+        ]
+    );
 }
 
 function register_tlc_rewrite_rules($wp_rewrite)
