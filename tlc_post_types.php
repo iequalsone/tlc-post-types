@@ -9,8 +9,8 @@ Author URI:
 
 /**
  * @classname TLC_Post_Types
- * @author remi (exomel.com)
- * @version 20100119
+ * @author Jonathan Howard
+ * @version 20190410
  */
 class TLC_Post_Types
 {
@@ -168,9 +168,35 @@ function register_tlc_post_types()
             'publicly_queryable' => true,
             'show_ui' => true,
             'show_in_menu' => true,
+            'menu_position' => 20,
             'show_in_nav_menus' => false,
             'supports' => [
                 'title', 
+                'revisions', 
+            ],
+            'hierarchical' => false,
+            'has_archive' => false,
+        ]
+    );
+
+    register_post_type('home-banner',
+        [
+            'labels' => [
+                'name' => __('Home Banners'),
+                'menu_name' => __('Banner Manager'),
+                'singular_name' => __('Home Banner'),
+                'all_items' => __('All Banners'),
+                'add_new_item' => __('Add New Banner'),
+            ],
+            'public' => false,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'menu_position' => 20,
+            'show_in_nav_menus' => false,
+            'supports' => [
+                'title', 
+                'thumbnail',
                 'revisions', 
             ],
             'hierarchical' => false,
