@@ -220,7 +220,7 @@ function register_tlc_post_types()
 			'show_in_nav_menus' => false,
 			'supports' => [
 				'title',
-				'excerpt',
+				'editor',
 				'thumbnail',
 				'post-formats',
 				'revisions',
