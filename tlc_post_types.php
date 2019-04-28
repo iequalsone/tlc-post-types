@@ -203,6 +203,33 @@ function register_tlc_post_types()
 			'has_archive' => false,
 		]
 	);
+
+	register_post_type('testimonials',
+		[
+			'labels' => [
+				'name' => __('Testimonials'),
+				'menu_name' => __('Testimonial Manager'),
+				'singular_name' => __('Testimonial'),
+				'all_items' => __('All Testimonials'),
+				'add_new_item' => __('Add New Testimonial'),
+			],
+			'public' => false,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'show_in_nav_menus' => false,
+			'supports' => [
+				'title',
+				'excerpt',
+				'thumbnail',
+				'post-formats',
+				'revisions',
+				'page-attributes'
+			],
+			'hierarchical' => false,
+			'has_archive' => true,
+		]
+	);
 }
 
 function register_tlc_rewrite_rules($wp_rewrite)
