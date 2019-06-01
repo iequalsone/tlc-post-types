@@ -91,6 +91,7 @@ function register_tlc_post_types()
 			'hierarchical' => false,
 			'has_archive' => true,
 			'taxonomies' => ['service-category'],
+			'rest_base' => 'services',
 			'rewrite' => [
 				'slug' => 'service',
 				'hierarchical' => true,
@@ -123,6 +124,7 @@ function register_tlc_post_types()
 			],
 			'hierarchical' => false,
 			'has_archive' => true,
+			'rest_base' => 'events',
 			'rewrite' => [
 				'slug' => 'event',
 				'hierarchical' => true,
