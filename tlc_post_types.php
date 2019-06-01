@@ -31,7 +31,8 @@ class TLC_Post_Types
 	{
 		add_action('init', 'register_tlc_post_types');
 		add_action('generate_rewrite_rules', 'register_tlc_rewrite_rules');
-		add_filter("rest_prepare_product", 'tlc_rest_prepare_post', 10, 3);
+		add_filter("rest_prepare_services", 'tlc_rest_prepare_post', 10, 3);
+		add_filter("rest_prepare_events", 'tlc_rest_prepare_post', 10, 3);
 	}
 
 	/**
