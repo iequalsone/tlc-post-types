@@ -31,6 +31,7 @@ class TLC_Post_Types
 	{
 		add_action('init', 'register_tlc_post_types');
 		add_action('generate_rewrite_rules', 'register_tlc_rewrite_rules');
+		add_filter("rest_prepare_product", 'tlc_rest_prepare_post', 10, 3);
 	}
 
 	/**
@@ -245,6 +246,17 @@ function register_tlc_rewrite_rules($wp_rewrite)
 		'event-category/([^/]+)/?$' => 'index.php?event-category=' . $wp_rewrite->preg_index(1),
 	];
 	$wp_rewrite->rules = $tlc_rules + $wp_rewrite->rules;
+}
+
+function tlc_rest_prepare_post($data, $post, $request) {
+	$_data = $data->data;
+	$fields = get_fields($post->ID);
+	foreach ($fields as $key => $value){
+		$_data[$key] = get_field($key, $post->ID);
+	}
+
+	$data->data = $_data;
+	return $data;
 }
 
 $TLC_Post_Types = new TLC_Post_Types();
