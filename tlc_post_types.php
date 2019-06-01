@@ -78,6 +78,7 @@ function register_tlc_post_types()
 			'show_ui' => true,
 			'show_in_menu' => true,
 			'show_in_nav_menus' => true,
+			'show_in_rest' => true,
 			'supports' => [
 				'title',
 				'editor',
@@ -112,6 +113,7 @@ function register_tlc_post_types()
 			'show_ui' => true,
 			'show_in_menu' => true,
 			'show_in_nav_menus' => true,
+			'show_in_rest' => true,
 			'supports' => [
 				'title',
 				'editor',
