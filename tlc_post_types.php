@@ -237,6 +237,30 @@ function register_tlc_post_types()
 			'has_archive' => true,
 		]
 	);
+
+	register_post_type('notification',
+		[
+			'labels' => [
+				'name' => __('Notifications'),
+				'menu_name' => __('Notification Manager'),
+				'singular_name' => __('Notification'),
+				'all_items' => __('All Notifications'),
+				'add_new_item' => __('Add New Notification'),
+			],
+			'public' => false,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'show_in_nav_menus' => false,
+			'supports' => [
+				'title',
+				'post-formats',
+				'revisions',
+			],
+			'hierarchical' => false,
+			'has_archive' => true,
+		]
+	);
 }
 
 function register_tlc_rewrite_rules($wp_rewrite)
