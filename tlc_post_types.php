@@ -316,6 +316,41 @@ function register_tlc_post_types()
 			],
 		]
 	);
+
+	register_post_type('wisdom-wednesday',
+		[
+			'labels' => [
+				'name' => __('Wisdom Wednesday'),
+				'menu_name' => __('Wisdom Wednesday Manager'),
+				'singular_name' => __('Wisdom Wednesday'),
+				'all_items' => __('All Wisdom Wednesdays'),
+				'add_new_item' => __('Add Wisdom Wednesday'),
+			],
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'show_in_nav_menus' => true,
+			'show_in_rest' => true,
+			'supports' => [
+				'title',
+				'editor',
+				'excerpt',
+				'thumbnail',
+				'post-formats',
+				'revisions',
+				'page-attributes'
+			],
+			'hierarchical' => false,
+			'has_archive' => true,
+			'rest_base' => 'wisdom-wednesday',
+			'rewrite' => [
+				'slug' => 'wisdom-wednesday',
+				'hierarchical' => true,
+				'with_front' => false,
+			],
+		]
+	);
 }
 
 function register_tlc_rewrite_rules($wp_rewrite)
@@ -325,6 +360,9 @@ function register_tlc_rewrite_rules($wp_rewrite)
 		'service-category/([^/]+)/?$' => 'index.php?service-category=' . $wp_rewrite->preg_index(1),
 		'event/([^/]+)/?$' => 'index.php?post_type=events&events=' . $wp_rewrite->preg_index(1),
 		'event-category/([^/]+)/?$' => 'index.php?event-category=' . $wp_rewrite->preg_index(1),
+		'lesson/([^/]+)/?$' => 'index.php?post_type=lessons&lessons=' . $wp_rewrite->preg_index(1),
+		'course/([^/]+)/?$' => 'index.php?course=' . $wp_rewrite->preg_index(1),
+		'wisdom-wednesday/([^/]+)/?$' => 'index.php?post_type=wisdom-wednesday&wisdom-wednesday=' . $wp_rewrite->preg_index(1),
 	];
 	$wp_rewrite->rules = $tlc_rules + $wp_rewrite->rules;
 }
