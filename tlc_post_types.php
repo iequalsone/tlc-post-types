@@ -261,6 +261,61 @@ function register_tlc_post_types()
 			'has_archive' => true,
 		]
 	);
+
+	register_taxonomy('course', ['lessons'],
+		[
+			'labels' => [
+				'name' => __('Course'),
+				'menu_name' => __('Courses'),
+				'singular_name' => __('Course'),
+				'all_items' => __('All Courses'),
+			],
+			'public' => true,
+			'hierarchical' => true,
+			'show_ui' => true,
+			'rewrite' => [
+				'slug' => 'course',
+				'hierarchical' => true,
+				'with_front' => false,
+			],
+		]
+	);
+
+	register_post_type('lessons',
+		[
+			'labels' => [
+				'name' => __('Lessons'),
+				'menu_name' => __('Course Manager'),
+				'singular_name' => __('Lesson'),
+				'all_items' => __('All Lessons'),
+				'add_new_item' => __('Add New Lesson'),
+			],
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'show_in_nav_menus' => true,
+			'show_in_rest' => true,
+			'supports' => [
+				'title',
+				'editor',
+				'excerpt',
+				'thumbnail',
+				'post-formats',
+				'revisions',
+				'page-attributes'
+			],
+			'hierarchical' => false,
+			'has_archive' => true,
+			'taxonomies' => ['course'],
+			'rest_base' => 'lessons',
+			'rewrite' => [
+				'slug' => 'lesson',
+				'hierarchical' => true,
+				'with_front' => false,
+			],
+		]
+	);
 }
 
 function register_tlc_rewrite_rules($wp_rewrite)
