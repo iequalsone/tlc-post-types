@@ -306,6 +306,9 @@ function register_tlc_post_types()
 				'page-attributes'
 			],
 			'hierarchical' => false,
+			'show_in_graphql' => true,
+      'graphql_single_name' => 'Lesson',
+      'graphql_plural_name' => 'Lessons',
 			'has_archive' => true,
 			'taxonomies' => ['course'],
 			'rest_base' => 'lessons',
