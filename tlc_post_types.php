@@ -366,8 +366,6 @@ function register_tlc_rewrite_rules($wp_rewrite)
 		'service-category/([^/]+)/?$' => 'index.php?service-category=' . $wp_rewrite->preg_index(1),
 		'event/([^/]+)/?$' => 'index.php?post_type=events&events=' . $wp_rewrite->preg_index(1),
 		'event-category/([^/]+)/?$' => 'index.php?event-category=' . $wp_rewrite->preg_index(1),
-		'lesson/([^/]+)/?$' => 'index.php?post_type=lessons&lessons=' . $wp_rewrite->preg_index(1),
-		'course/([^/]+)/?$' => 'index.php?course=' . $wp_rewrite->preg_index(1),
 		'wisdom-wednesday/([^/]+)/?$' => 'index.php?post_type=wisdom-wednesday&wisdom-wednesday=' . $wp_rewrite->preg_index(1),
 	];
 	$wp_rewrite->rules = $tlc_rules + $wp_rewrite->rules;
