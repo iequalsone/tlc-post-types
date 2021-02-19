@@ -130,7 +130,7 @@ function register_tlc_post_types()
 			'has_archive' => true,
 			'rest_base' => 'events',
 			'rewrite' => [
-				'slug' => 'schedule',
+				'slug' => 'event-listings',
 				'hierarchical' => true,
 				'with_front' => false,
 			],
